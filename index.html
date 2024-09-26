@@ -57,87 +57,34 @@
             <span class="material-icons">attach_money</span>
             <span class="amount">0.00/h</span>
         </div>
-        <div class="icon" id="share-icon">
-            <span class="material-icons">arrow_upward</span>
-            <span class="share-text">Invite</span>
-        </div>
     </div>
 </div>
 
-<!-- Modal za dijeljenje -->
-<div id="share-modal" class="modal" style="display:none;">
-    <div class="modal-content">
-        <h2>Podijeli putem:</h2>
-        <a href="viber://pa?text=Dobar dan, pridruži mi se na https://nftnox.github.io/pi2/" target="_blank">
-            <span class="material-icons">message</span> Viber
-        </a>
-        <a href="https://api.whatsapp.com/send?text=Dobar dan, pridruži mi se na https://nftnox.github.io/pi2/" target="_blank">
-            <span class="material-icons">chat</span> WhatsApp
-        </a>
-        <a href="fb-messenger://share/?link=https://nftnox.github.io/pi2/" target="_blank">
-            <span class="material-icons">message</span> Messenger
-        </a>
-        <a href="mailto:?subject=Pridruži mi se&body=Dobar dan, pridruži mi se na https://nftnox.github.io/pi2/">
-            <span class="material-icons">email</span> Gmail
-        </a>
-        <a href="sms:?&body=Dobar dan, pridruži mi se na https://nftnox.github.io/pi2/">
-            <span class="material-icons">sms</span> SMS
-        </a>
-    </div>
-</div>
-
-<style>
-    .modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
-}
-
-.modal-content a {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    text-decoration: none;
-    color: #333;
-}
-
-.modal-content span {
-    margin-right: 10px;
-}
-
-.modal-content h2 {
-    margin-bottom: 20px;
-}
-
-.modal-content a:hover {
-    color: #007BFF;
-    cursor: pointer;
-}
-
-</style>
+<!-- Ikona za dijeljenje -->
+<button id="share-icon">
+    <span class="material-icons">share</span> Pozovi prijatelje
+</button>
 
 <script>
     const shareIcon = document.getElementById('share-icon');
-const shareModal = document.getElementById('share-modal');
 
-// Prikaz modal prozora na klik "Invite"
-shareIcon.addEventListener('click', () => {
-    shareModal.style.display = 'block';
-});
+    // Funkcija za nativno dijeljenje
+    shareIcon.addEventListener('click', async () => {
+        const shareData = {
+            title: 'Poziv za pridruživanje',
+            text: 'Dobar dan, pridruži mi se na https://nftnox.github.io/pi2/',
+            url: 'https://nftnox.github.io/pi2/'
+        };
 
-// Zatvaranje modala kada se klikne izvan njega
-window.addEventListener('click', (event) => {
-    if (event.target == shareModal) {
-        shareModal.style.display = 'none';
-    }
-});
-
+        try {
+            await navigator.share(shareData);
+            console.log('Uspješno podijeljeno');
+        } catch (err) {
+            console.error('Greška prilikom dijeljenja:', err);
+        }
+    });
 </script>
+
 
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
