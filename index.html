@@ -72,11 +72,11 @@
 
     // Funkcija za nativno dijeljenje
     shareIcon.addEventListener('click', async () => {
-        const shareData = {
-            title: 'Poziv za pridruživanje',
-            text: 'Dobar dan, pridruži mi se na https://nftnox.github.io/pi2/',
-            url: 'https://nftnox.github.io/pi2/'
-        };
+    const shareData = {
+        title: 'Poziv za pridruživanje',
+        text: 'Dobar dan, pridruži mi se na https://nftnox.github.io/pi3/registracija.html',
+        url: 'https://nftnox.github.io/pi3/registracija.html'
+    };
 
         try {
             await navigator.share(shareData);
@@ -239,24 +239,27 @@
         padding: 20px;
     }
     .icon-section {
-        flex: 2;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        gap: 20px;
-    }
-    .icon {
-        background-color: white;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 60px;
-        height: 60px;
-        font-size: 24px;
-        cursor: pointer;
-        position: relative; /* Omogućuje pozicioniranje zaštitnog kruga */
-    }
+    flex: 2;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+}
+
+.icon {
+    background-color: transparent; /* Prozirna pozadina */
+    border-radius: 0; /* Pravougaoni oblik */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px; /* Širina pravougaonika */
+    height: 60px; /* Visina pravougaonika */
+    font-size: 24px;
+    cursor: pointer;
+    position: relative;
+    border: 2px solid black; /* Crni obrub (outline) */
+}
+
    
     .amount {
         font-size: 24px;
@@ -271,13 +274,32 @@
 }
 
 
+#share-icon {
+    background-color: transparent; /* Prozirna pozadina */
+    border-radius: 0; /* Pravougaoni oblik */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px; /* Širina pravougaonika */
+    height: 60px; /* Visina pravougaonika */
+    font-size: 22px;
+    cursor: pointer;
+    position: relative;
+    border: 2px solid black; /* Crni obrub (outline) */
+}
+
+#share-icon span.material-icons {
+    font-size: 24px; /* Veličina ikone */
+}
+
+
 </style>
 
 
 
 <style>
     header {
-  background-color: #6a5acd; /* Ljubičasta boja */
+  background-color: #5a99cd;/* Ljubičasta boja */
   color: white;
   display: flex;
   justify-content: space-between;
@@ -301,7 +323,7 @@
 #toggle-menu {
   display: none; /* Skriveno po defaultu */
   flex-direction: column; /* Vertikalno poravnanje menija */
-  background-color: #6a5acd;
+  background-color: #5a99cd;
   position: absolute;
   right: 0px;
   top: 60px;
@@ -345,3 +367,28 @@
 
   </style>
 
+
+
+<style>
+    #current-price {
+    position: relative;
+}
+
+@media only screen and (max-width: 768px) {
+    #current-price {
+        transform: translateX(20px); /* Podesi ovu vrijednost prema željenom pomjeranju */
+    }
+}
+
+#user-name {
+    position: relative;
+}
+
+@media only screen and (max-width: 768px) {
+    #user-name {
+        transform: translateX(-20px); /* Pomjeranje ulijevo, prilagodi prema potrebi */
+    }
+}
+
+
+</style>
