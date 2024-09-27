@@ -64,7 +64,13 @@
 </button>
 </div>
 
-<img src="images/delta.jpg" alt="Delta Image" style="max-width: 100%; height: auto;">
+<div class="image-container">
+    <img src="images/delta.jpg" alt="Delta Image" style="max-width: 100%; height: auto;">
+</div>
+
+
+<div class="background blue"></div>
+<div class="background purple"></div>
 
 
 <script>
@@ -160,7 +166,7 @@
                 currentPrice += increments * 0.01; // Ažuriranje trenutne cijene
                 document.getElementById('amount').innerText = currentPrice.toFixed(2); // Ažuriranje prikazane cijene
                 lastClickTime.setSeconds(lastClickTime.getSeconds() + increments * 5); // Ažuriranje vremena poslednjeg klika
-                await updateFirestore(currentPrice, lastClickTime); // Ažuriranje Firestore sa novim vremenom i cijenom
+                await updateFirestore(currentPrice, lastClickTime); // Ažuriranje Firestores a novim vremenom i cijenom
             }
 
             // Klik na dolar ikonicu za dodavanje 0.01 na trenutnu cijenu
@@ -218,8 +224,41 @@
         font-family: 'Roboto', sans-serif; /* Promjena fonta */
         margin: 0;
         padding: 0;
+        background-color: black;
+        overflow: hidden;
     }
    
+    .background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .blue {
+    background: linear-gradient(to bottom right, rgba(23, 135, 226, 0.6), rgba(0, 0, 0, 0) 50%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    transform: translateY(150px); /* Pomakni prema dolje */
+}
+@media (max-width: 768px) {
+    .blue {
+        transform: translateY(166px); /* Pomakni prema dolje za mobilne uređaje */
+    }
+}
+
+        .purple {
+            background: linear-gradient(to top left, rgba(128, 0, 128, 0.6), rgba(0, 0, 0, 0) 50%);
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50%;
+            height: 50%;
+        }
+
     nav {
         display: flex;
         gap: 20px;
@@ -299,7 +338,7 @@
 
 <style>
    header {
-  background: linear-gradient(to right, #5a99cd, #4b0078); /* Plava do tamno ljubičasta */
+  background: linear-gradient(to right, #5a99cd, #6800a5); /* Plava do tamno ljubičasta */
   color: white;
   display: flex;
   justify-content: space-between;
@@ -370,8 +409,36 @@
 
 }
 
+.image-container {
+    display: flex;
+    justify-content: center; /* Centriraj sliku */
+    align-items: flex-start; /* Poravnaj gornji dio */
+    position: relative;
+}
 
-  
+@media (max-width: 768px) {
+    .image-container {
+        align-items: flex-start; /* Gornji dio */
+        transform: translateY(80px); /* Pomakni prema dolje na mobilnim uređajima */
+    }
+}
+
+.image-container img {
+    animation: pulse 2s infinite; /* Animacija nazvana 'pulse' koja traje 2 sekunde i ponavlja se beskonačno */
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1); /* Početna veličina */
+    }
+    50% {
+        transform: scale(1.05); /* Blago povećanje veličine */
+    }
+    100% {
+        transform: scale(1); /* Vraćanje na početnu veličinu */
+    }
+}
+
 
   </style>
 
