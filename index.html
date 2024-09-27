@@ -242,13 +242,9 @@
     left: 0;
     width: 50%;
     height: 50%;
-    transform: translateY(150px); /* Pomakni prema dolje */
+    
 }
-@media (max-width: 768px) {
-    .blue {
-        transform: translateY(166px); /* Pomakni prema dolje za mobilne uređaje */
-    }
-}
+
 
         .purple {
             background: linear-gradient(to top left, rgba(128, 0, 128, 0.6), rgba(0, 0, 0, 0) 50%);
@@ -259,6 +255,7 @@
             height: 50%;
         }
 
+        
     nav {
         display: flex;
         gap: 20px;
@@ -274,7 +271,7 @@
     }
     .container {
         display: flex;
-        background-color: #f0f0f0; /* Sivi pozadinski boja */
+        
         padding: 20px;
     }
     .icon-section {
@@ -296,7 +293,15 @@
     font-size: 24px;
     cursor: pointer;
     position: relative;
-    border: 2px solid black; /* Crni obrub (outline) */
+    background: transparent; /* Prozirna pozadina */
+    color: white; /* Bijela boja teksta */
+    border: 2px solid transparent; /* Prozirni obrub (outline) */
+    border-image: linear-gradient(to right, #5a99cd, #4b0078) 1; /* Gradijentni obrub s lijeva na desno */
+
+
+    
+
+    
 }
 
    
@@ -324,7 +329,12 @@
     font-size: 22px;
     cursor: pointer;
     position: relative;
-    border: 2px solid black; /* Crni obrub (outline) */
+    background: transparent; /* Prozirna pozadina */
+    color: white; /* Bijela boja teksta */
+    border: 2px solid transparent; /* Prozirni obrub (outline) */
+    border-image: linear-gradient(to right, #5a99cd, #4b0078) 1; /* Gradijentni obrub s lijeva na desno */
+
+
 }
 
 #share-icon span.material-icons {
@@ -338,7 +348,7 @@
 
 <style>
    header {
-  background: linear-gradient(to right, #5a99cd, #6800a5); /* Plava do tamno ljubičasta */
+
   color: white;
   display: flex;
   justify-content: space-between;
@@ -419,7 +429,7 @@
 @media (max-width: 768px) {
     .image-container {
         align-items: flex-start; /* Gornji dio */
-        transform: translateY(80px); /* Pomakni prema dolje na mobilnim uređajima */
+        transform: translateY(60px); /* Pomakni prema dolje na mobilnim uređajima */
     }
 }
 
